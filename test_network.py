@@ -10,8 +10,8 @@ import numpy as np
 import pickle as pkl
 import copy
 import argparse
-caffe.set_mode_gpu()
-caffe.set_device(device_id)
+#caffe.set_mode_gpu()
+#caffe.set_device(device_id)
 
 def test_model(deploy_net, snapshot_tag, 
                visual_feature='feature_process_norm', 
@@ -84,7 +84,7 @@ def test_model(deploy_net, snapshot_tag,
         os.mkdir(result_dir)
 
     pkl.dump(all_scores, open('%s/%s_%s.p' %(result_dir, snapshot_tag, split), 'w'))
-    print "Dumped results to: %s/%s_%s.p" %(result_dir, snapshot_tag, split)
+    print("Dumped results to: %s/%s_%s.p" %(result_dir, snapshot_tag, split))
 
 if __name__ == '__main__':
 
