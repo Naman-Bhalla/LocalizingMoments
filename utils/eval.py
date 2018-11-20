@@ -31,9 +31,9 @@ def eval_predictions(segments, data):
     rank5 = np.sum(np.array(average_ranks) <= 5)/float(len(average_ranks))
     miou = np.mean(average_iou)
   
-    print "Average rank@1: %f" %rank1
-    print "Average rank@5: %f" %rank5
-    print "Average iou: %f" %miou
+    print("Average rank@1: %f" %rank1)
+    print("Average rank@5: %f" %rank5)
+    print("Average iou: %f" %miou)
     return rank1, rank5, miou
 
 if __name__ == '__main__':

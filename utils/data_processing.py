@@ -23,7 +23,7 @@ glove_path = 'data/glove.6B.%dd.txt' %glove_dim
 #glove_path = 'data/glove_debug_path.txt' #for debugging
 
 if glove_path == 'data/glove_debug_path.txt':
-    print "continue?"
+    print("continue?")
     pdb.set_trace()
     
 possible_segments = [(0,0), (1,1), (2,2), (3,3), (4,4), (5,5)]
@@ -136,7 +136,7 @@ class recurrent_word(recurrent_language):
 class recurrent_embedding(recurrent_language):
 
   def read_embedding(self):
-    print "Reading glove embedding"
+    print("Reading glove embedding")
     embedding = glove_embedding(glove_path)
     self.embedding = embedding
 
@@ -161,7 +161,7 @@ class recurrent_embedding(recurrent_language):
       try:
         vocab_dict[word] = embedding.glove_array[:,embedding.glove_dict[word]] 
       except:
-        print "%s not in glove embedding" %word
+        print("%s not in glove embedding" %word)
     self.vocab_dict = vocab_dict
 
   def preprocess(self, data):
@@ -242,7 +242,7 @@ class extractLanguageFeatures(extractData):
         self.top_shapes = [(self.T, self.batch_size, self.num_glove_centroids),
                            (self.T, self.batch_size)]
     else:
-        print "Will only be able to run in test mode"
+        print("Will only be able to run in test mode")
 
   def get_features(self, query):
 
@@ -447,7 +447,7 @@ class python_data_layer(caffe.Layer):
 
     self.top_shapes = [shape_dict[tn[1]] for tn in self.top_names]
 
-    print 'Outputs:', self.top_names
+    print('Outputs:', self.top_names)
     if len(top) != len(self.top_names):
       raise Exception('Incorrect number of outputs (expected %d, got %d)' %
                       (len(self.top_names), len(top)))
@@ -457,7 +457,7 @@ class python_data_layer(caffe.Layer):
     top_count = 0
     for top_index, name in self.top_names:
       shape = self.top_shapes[top_count] 
-      print 'Top name %s has shape %s.' %(name, shape)
+      print('Top name %s has shape %s.' %(name, shape))
       top[top_index].reshape(*shape)
       top_count += 1
 
