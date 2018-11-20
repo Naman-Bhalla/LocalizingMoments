@@ -32,7 +32,7 @@ def test_model(deploy_net, snapshot_tag,
     visual_extractor_fcn = extractVisualFeatures 
 
     language_process = language_feature_process_dict[language_feature] 
-    data_orig = read_json('data/%s_data.json' %split)
+    data_orig = read_json('data/test_me.json')
     language_processor = language_process(data_orig)
     data = language_processor.preprocess(data_orig)
     params['vocab_dict'] = language_processor.vocab_dict
@@ -83,7 +83,7 @@ def test_model(deploy_net, snapshot_tag,
     if not os.path.exists(result_dir):
         os.mkdir(result_dir)
 
-    pkl.dump(all_scores, open('%s/%s_%s.p' %(result_dir, snapshot_tag, split), 'w'))
+    pkl.dump(all_scores, open('%s/%s_%s.p' %(result_dir, snapshot_tag, split), 'wb'))
     print("Dumped results to: %s/%s_%s.p" %(result_dir, snapshot_tag, split))
 
 if __name__ == '__main__':

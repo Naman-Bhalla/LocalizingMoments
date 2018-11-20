@@ -230,7 +230,7 @@ class extractLanguageFeatures(extractData):
 
     self.vocab_dict = params['vocab_dict']
     self.batch_size = params['batch_size']
-    self.num_glove_centroids = self.vocab_dict.values()[0].shape[0] 
+    self.num_glove_centroids = list(self.vocab_dict.values())[0].shape[0] 
     self.T = params['sentence_length']
 
     if isinstance(result, dict):
